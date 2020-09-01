@@ -17,6 +17,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.testng.annotations.AfterClass;
@@ -34,7 +36,8 @@ public class ExtentReportTest {
     
     @BeforeTest
     public void startReport(){
-    extent = new ExtentReports(System.getProperty("user.dir")+"\\ExtentReportResults.html");
+    String reportName = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+    extent = new ExtentReports(System.getProperty("user.dir") + "\\Report\\"+reportName+".html");
     extent.loadConfig(new File(System.getProperty("user.dir")+"\\extent-config.xml"));    
     
     }
